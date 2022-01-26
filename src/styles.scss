@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+.high-contrast {
+  background: black !important;
+  color: white !important;
+  border-color: white !important; }
+  .high-contrast nav {
+    background: black !important;
+    color: white !important;
+    border-color: white !important; }
+  .high-contrast div {
+    background: black !important;
+    color: white !important;
+    border-color: white !important;
+    border-bottom: 1px solid white; }
+  .high-contrast nav {
+    border-bottom: 1px solid white; }
+  .high-contrast body, .high-contrast h1, .high-contrast h2, .high-contrast h3, .high-contrast h4, .high-contrast h5, .high-contrast p, .high-contrast .contrast span {
+    color: white !important; }
+  .high-contrast option, .high-contrast body {
+    background: black !important;
+    color: yellow !important; }
+  .high-contrast td {
+    background: black !important;
+    color: white !important; }
+  .high-contrast img {
+    background: white !important;
+    color: yellow !important; }
+  .high-contrast ul, .high-contrast li {
+    background: black !important;
+    color: yellow !important; }
+  .high-contrast a, .high-contrast button {
+    background: black !important;
+    color: yellow !important;
+    border: 1px solid yellow !important; }
+  .high-contrast select, .high-contrast input {
+    background: black !important;
+    color: white !important;
+    border: 1px solid white !important; }

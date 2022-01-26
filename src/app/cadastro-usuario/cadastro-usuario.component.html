@@ -1,0 +1,33 @@
+<h1>Cadastro de Usuário</h1>
+<form [formGroup]="formUsuario" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="exampleInputNome" class="form-label">Nome</label>
+    <input type="titulo" class="form-control" id="exampleInputNome" aria-describedby="nomeHelp" formControlName="nome" required>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputCpf" class="form-label">CPF</label>
+    <input type="textarea" class="form-control" id="exampleInputCpf" aria-describedby="cpfHelp" formControlName="cpf" required>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputTelefone" class="form-label">Telefone</label>
+    <input type="fone" class="form-control" id="exampleInputTelefone" aria-describedby="telefoneHelp" formControlName="telefone" required>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail" class="form-label">Email</label>
+    <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" formControlName="email" required>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputSenha" class="form-label">Senha</label>
+    <input type="password" class="form-control" id="exampleInputSenha" aria-describedby="senhaHelp" formControlName="senha" required>
+  </div>
+  <div class="mb-3">
+    <label for="idiomas" class="form-label" >Idioma</label>
+    <select formControlName="idioma" class="form-label" id="idiomas" class="form-control" required>
+      <option>Selecione o idioma nativo do usuário</option>
+      <option [ngValue]="idioma" *ngFor="let idioma of idiomas" >
+        {{idioma.nome}}
+      </option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form>

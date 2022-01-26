@@ -1,0 +1,42 @@
+<h1>Cadastro de Filmes</h1>
+<form [formGroup]="formFilme" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="exampleInputTitulo" class="form-label">Titulo</label>
+    <input type="titulo" class="form-control" id="exampleInputTitulo" aria-describedby="tituloHelp" formControlName="titulo" required>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputSinopse" class="form-label">Sinopse</label>
+    <input type="textarea" class="form-control" id="exampleInputSinopse" aria-describedby="sinopseHelp" formControlName="sinopse" required>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputImagem" class="form-label">Imagem</label>
+    <input type="imagem" class="form-control" id="exampleInputImagem" aria-describedby="imagemHelp" formControlName="imagem" required>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputDataLancamento" class="form-label">Data Lançamento</label>
+    <input type="date" class="form-control" id="exampleInputDataLancamento" aria-describedby="dataLancamentoHelp" formControlName="dataLancamento" required>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputDuracao" class="form-label">Duração</label>
+    <input type="time" class="form-control" id="exampleInputDuracao" aria-describedby="duracaoHelp" formControlName="duracao" required>
+  </div>
+  <div class="mb-3">
+    <label for="idiomas" class="form-label" >Idioma</label>
+    <select formControlName="idioma" class="form-label" id="idiomas" class="form-control" required >
+      <option>Selecione o idioma</option>
+      <option [ngValue]="idioma" *ngFor="let idioma of idiomas" >
+        {{idioma.nome}}
+      </option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="categorias" class="form-label" >Categoria</label>
+    <select formControlName="categoria" class="form-label" id="categorias" class="form-control" required >
+      <option>Selecione a categoria</option>
+      <option [ngValue]="categoria" *ngFor="let categoria of categorias" >
+        {{categoria.nome}}
+      </option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
