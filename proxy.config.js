@@ -6,5 +6,4 @@ const PROXY_CONFIG = [
     logLevel: 'debug'
   }
 ];
-
 module.exports = PROXY_CONFIG;
