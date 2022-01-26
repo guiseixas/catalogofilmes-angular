@@ -2,6 +2,7 @@ import { CategoriaService } from './../services/categoria.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Categoria } from '../model/categoria.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-categoria',
@@ -14,10 +15,22 @@ export class CadastroCategoriaComponent implements OnInit {
 
   categoria!: Categoria;
 
-  constructor(private categoriaService: CategoriaService) { }
+  idCategoria!: number;
+
+  constructor(private categoriaService: CategoriaService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.createForm();
+    this.route.params.subscribe(params => {
+      let id = params['id']
+      if(id != null){
+        this.categoriaService.getCategoriaById(+id).subscribe(data => {
+          this.idCategoria = id;
+          this.categoria = data;
+          this.patchUsuario(this.idCategoria);
+        });
+      }
+    });
   }
 
   createForm(){
@@ -27,11 +40,27 @@ export class CadastroCategoriaComponent implements OnInit {
     })
   }
 
+  patchUsuario(id: number){
+    this.categoriaService.getCategoriaById(id).subscribe(data => {
+      this.formCategoria.patchValue({
+        nome: data.nome,
+        tag: data.tag
+      });
+    });
+  }
+
   onSubmit(){
     this.categoria = this.formCategoria.value;
-    this.categoriaService.salvaCategoria(this.categoria).subscribe(data => {
-      this.categoria = data;
-    });
+    if(this.idCategoria != null){
+      this.categoria.id = this.idCategoria;
+      this.categoriaService.atualizaCategoria(this.categoria).subscribe(data => {
+        console.log(data);
+      });
+    }else{
+      this.categoriaService.salvaCategoria(this.categoria).subscribe(data =>{
+        console.log(data);
+      });
+    }
   }
 
 }

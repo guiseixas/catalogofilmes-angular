@@ -23,6 +23,8 @@ export class CadastroFilmesComponent implements OnInit {
 
   filme!: Filme;
 
+  idFilme!: number;
+
   constructor(
     private idiomaService: IdiomaService,
     private categoriaService: CategoriaService,
@@ -42,9 +44,9 @@ export class CadastroFilmesComponent implements OnInit {
       let id = params['id']
       if(id != null){
         this.filmeService.getFilmeById(+id).subscribe(data => {
+          this.idFilme = id;
           this.filme = data;
-          console.log(this.filme)
-          this.updateMovie(this.filme);
+          this.patchMovie(this.idFilme);
         });
       }
     });
@@ -62,8 +64,8 @@ export class CadastroFilmesComponent implements OnInit {
     })
   }
 
-  updateMovie(filme: Filme){
-    this.filmeService.atualizaFilme(filme).subscribe(data => {
+  patchMovie(id: number){
+    this.filmeService.getFilmeById(id).subscribe(data => {
       this.formFilme.patchValue({
         titulo: data.titulo,
         sinopse: data.sinopse,
@@ -78,9 +80,15 @@ export class CadastroFilmesComponent implements OnInit {
 
   onSubmit(){
     this.filme = this.formFilme.value;
-    this.filmeService.salvaFilme(this.filme).subscribe(data =>{
-      this.filme = data;
-    });
+    if(this.idFilme != null){
+      this.filme.id = this.idFilme;
+      this.filmeService.atualizaFilme(this.filme).subscribe(data =>{
+        console.log(data);
+      });
+    }else{
+      this.filmeService.salvaFilme(this.filme).subscribe(data =>{
+        console.log(data);
+      });
+    }
   }
-
 }

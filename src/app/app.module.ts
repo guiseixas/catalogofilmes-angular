@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { CadastroFilmesComponent } from './cadastro-filmes/cadastro-filmes.component';
 import { CadastroCategoriaComponent } from './cadastro-categoria/cadastro-categoria.component';
 import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
+import { CadastroIdiomaComponent } from './cadastro-idioma/cadastro-idioma.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.co
     LoginComponent,
     CadastroFilmesComponent,
     CadastroCategoriaComponent,
-    CadastroUsuarioComponent
+    CadastroUsuarioComponent,
+    CadastroIdiomaComponent
   ],
   imports: [
     BrowserModule,

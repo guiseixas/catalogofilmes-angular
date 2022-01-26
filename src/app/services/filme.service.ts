@@ -34,7 +34,7 @@ export class FilmeService {
   atualizaFilme(filme: Filme){
     const token = localStorage.getItem('token') || '';
     const headers = new HttpHeaders().append('Authorization', token);
-    return this.http.post<Filme>("filme/atualizaFilme", filme, {headers});
+    return this.http.put<Filme>("filme/atualizaFilme", filme, {headers});
   }
 
   deleteFilmeById(id: number){

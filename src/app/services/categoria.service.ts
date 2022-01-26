@@ -27,7 +27,7 @@ export class CategoriaService {
   atualizaCategoria(categoria: Categoria){
     const token = localStorage.getItem('token') || '';
     const headers = new HttpHeaders().append('Authorization', token);
-    return this.http.post<Categoria>("categoria/atualizaCategoria", categoria, {headers});
+    return this.http.put<Categoria>("categoria/atualizaCategoria", categoria, {headers});
   }
 
   deleteCategoriaById(id: number){

@@ -26,7 +26,7 @@ export class UsuarioService {
   atualizaUsuario(usuario: Usuario){
     const token = localStorage.getItem('token') || '';
     const headers = new HttpHeaders().append('Authorization', token);
-    return this.http.post<Usuario>("usuario/atualizaUsuario", usuario, {headers});
+    return this.http.put<Usuario>("usuario/atualizaUsuario", usuario, {headers});
   }
 
   deleteUsuarioById(id: number){

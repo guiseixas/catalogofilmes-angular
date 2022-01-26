@@ -26,7 +26,7 @@ export class IdiomaService {
   atualizaIdioma(idioma: Idioma){
     const token = localStorage.getItem('token') || '';
     const headers = new HttpHeaders().append('Authorization', token);
-    return this.http.post<Idioma>("idioma/atualizaIdioma", idioma, {headers});
+    return this.http.put<Idioma>("idioma/atualizaIdioma", idioma, {headers});
   }
 
   deleteIdiomaById(id: number){
