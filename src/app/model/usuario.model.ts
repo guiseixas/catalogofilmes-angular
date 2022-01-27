@@ -8,4 +8,5 @@ export interface Usuario{
   email: String;
   senha: String;
   idioma: Idioma;
+
 }

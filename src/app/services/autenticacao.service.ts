@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 export class AutenticacaoService {
 
   constructor(private httpClient: HttpClient) { }
-
     autenticar(emailUsuario: string, senhaUsuario: string): Observable<any>{
       return this.httpClient.post('auth', {
         email: emailUsuario,

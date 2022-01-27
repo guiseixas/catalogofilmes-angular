@@ -12,7 +12,6 @@ export class CardComponent implements OnInit {
 
   @Input() filme!: Filme;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

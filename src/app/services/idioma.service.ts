@@ -34,4 +34,5 @@ export class IdiomaService {
     const headers = new HttpHeaders().append('Authorization', token);
     return this.http.delete<Idioma>("idioma/deleteIdiomaById/" + id), {headers};
   }
+
 }

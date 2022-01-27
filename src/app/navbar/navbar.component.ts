@@ -43,4 +43,5 @@ export class NavbarComponent implements OnInit {
     }
     this.contrast = !this.contrast;
   }
+
 }

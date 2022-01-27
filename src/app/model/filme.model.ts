@@ -10,4 +10,5 @@ export interface Filme {
   duracao: String;
   idioma: Idioma;
   categoria: Categoria;
+
 }

@@ -11,6 +11,8 @@ import { FilmeService } from '../services/filme.service';
 })
 export class CardListComponent implements OnInit {
 
+  listaFilmes!: Filme[];
+
   constructor(private filmeService: FilmeService, private categoriaService: CategoriaService) {
     this.categoriaService.eventoSelecao.subscribe(id => {
             if(id == 0){
@@ -31,8 +33,6 @@ export class CardListComponent implements OnInit {
         }
     });
   }
-
-  listaFilmes!: Filme[];
 
   ngOnInit(): void {
     this.getFilmes();

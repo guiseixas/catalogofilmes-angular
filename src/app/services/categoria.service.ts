@@ -37,7 +37,6 @@ export class CategoriaService {
   }
 
   eventoSelecao: EventEmitter<number> = new EventEmitter();
-
   enviarCategoria(id: number){
     this.eventoSelecao.emit(id);
   }

@@ -48,5 +48,4 @@ export class FilmeService {
   enviarFilmeByName(titulo: string | null){
     this.eventoFilmeByName.emit(titulo);
   }
-
 }

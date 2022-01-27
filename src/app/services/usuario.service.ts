@@ -34,4 +34,5 @@ export class UsuarioService {
     const headers = new HttpHeaders().append('Authorization', token);
     return this.http.delete<String>("usuario/deleteUsuarioById/" + id, {headers});
   }
+
 }
