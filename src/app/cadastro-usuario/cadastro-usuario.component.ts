@@ -14,11 +14,8 @@ import { ActivatedRoute } from '@angular/router';
 export class CadastroUsuarioComponent implements OnInit {
 
   formUsuario!: FormGroup;
-
   idiomas!: Idioma[];
-
   usuario!: Usuario;
-
   idUsuario!: number;
 
   constructor(private usuarioService: UsuarioService, private idiomaService: IdiomaService, private route: ActivatedRoute) { }

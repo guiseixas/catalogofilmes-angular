@@ -62,5 +62,4 @@ export class CadastroCategoriaComponent implements OnInit {
       });
     }
   }
-
 }
