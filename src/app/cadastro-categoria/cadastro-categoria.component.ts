@@ -1,8 +1,10 @@
+import { IdiomaService } from './../services/idioma.service';
 import { CategoriaService } from './../services/categoria.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Categoria } from '../model/categoria.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Idioma } from '../model/idioma.model';
 
 @Component({
   selector: 'app-cadastro-categoria',
@@ -17,10 +19,15 @@ export class CadastroCategoriaComponent implements OnInit {
 
   idCategoria!: number;
 
-  constructor(private categoriaService: CategoriaService, private route: ActivatedRoute) { }
+  idiomas!: Idioma[];
+
+  constructor(private categoriaService: CategoriaService, private route: ActivatedRoute, private idiomaService: IdiomaService, private router: Router) { }
 
   ngOnInit(): void {
     this.createForm();
+    this.idiomaService.getIdiomas().subscribe(data => {
+      this.idiomas = data;
+    });
     this.route.params.subscribe(params => {
       let id = params['id']
       if(id != null){
@@ -36,7 +43,8 @@ export class CadastroCategoriaComponent implements OnInit {
   createForm(){
     this.formCategoria = new FormGroup({
       nome: new FormControl(null),
-      tag: new FormControl(null)
+      tag: new FormControl(null),
+      idioma: new FormControl(null)
     })
   }
 
@@ -49,16 +57,21 @@ export class CadastroCategoriaComponent implements OnInit {
     });
   }
 
+  deleteCategoria(){
+    if(this.idCategoria != null){
+      this.categoriaService.deleteCategoriaById(this.idCategoria).subscribe(data => {
+      });
+    }
+  }
+
   onSubmit(){
     this.categoria = this.formCategoria.value;
     if(this.idCategoria != null){
       this.categoria.id = this.idCategoria;
       this.categoriaService.atualizaCategoria(this.categoria).subscribe(data => {
-        console.log(data);
       });
     }else{
       this.categoriaService.salvaCategoria(this.categoria).subscribe(data =>{
-        console.log(data);
       });
     }
   }

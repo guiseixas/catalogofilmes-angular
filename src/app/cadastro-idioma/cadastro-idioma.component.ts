@@ -2,7 +2,7 @@ import { IdiomaService } from './../services/idioma.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Idioma } from '../model/idioma.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-idioma',
@@ -17,7 +17,7 @@ export class CadastroIdiomaComponent implements OnInit {
 
   idIdioma!: number;
 
-  constructor(private idiomaService: IdiomaService, private route: ActivatedRoute) { }
+  constructor(private idiomaService: IdiomaService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -49,16 +49,22 @@ export class CadastroIdiomaComponent implements OnInit {
     });
   }
 
+  deleteIdioma(){
+    if(this.idIdioma != null){
+      this.idiomaService.deleteIdiomaById(this.idIdioma).subscribe(data =>{
+
+      });
+    }
+  }
+
   onSubmit(){
     this.idioma = this.formIdioma.value;
     if(this.idIdioma != null){
       this.idioma.id = this.idIdioma;
       this.idiomaService.atualizaIdioma(this.idioma).subscribe(data => {
-        console.log(data);
       });
     }else{
       this.idiomaService.salvaIdioma(this.idioma).subscribe(data => {
-        console.log(data);
       });
     }
   }

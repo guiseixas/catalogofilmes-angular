@@ -80,10 +80,9 @@ export class CadastroFilmesComponent implements OnInit {
   }
 
   deleteFilme(){
-    console.log(this.idFilme);
     if(this.idFilme != null){
       this.filmeService.deleteFilmeById(this.idFilme).subscribe(data =>{
-        console.log(data);
+        this.router.navigate(['']);
       });
     }
   }

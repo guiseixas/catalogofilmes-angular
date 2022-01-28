@@ -1,5 +1,5 @@
 <h1>Cadastro de Idiomas</h1>
-<form [formGroup]="formIdioma" (ngSubmit)="onSubmit()">
+<form [formGroup]="formIdioma">
   <div class="mb-3">
     <label for="exampleInputNome" class="form-label">Nome</label>
     <input type="nome" class="form-control" id="exampleInputNome" aria-describedby="nomeHelp" formControlName="nome" required>
@@ -8,5 +8,6 @@
     <label for="exampleInputTag" class="form-label">Tag</label>
     <input type="tag" class="form-control" id="exampleInputTag" aria-describedby="tagHelp" formControlName="tag" required>
   </div>
-  <button type="submit" class="btn btn-primary">SUBMIT</button>
+  <button type="submit" class="btn btn-primary" (click)="onSubmit()">ENVIAR</button>
+  <button type="delete" class="btn btn-primary" (click)="deleteIdioma()">DELETAR</button>
 </form>

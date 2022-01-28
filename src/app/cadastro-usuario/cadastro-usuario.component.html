@@ -1,5 +1,5 @@
 <h1>Cadastro de Usuário</h1>
-<form [formGroup]="formUsuario" (ngSubmit)="onSubmit()">
+<form [formGroup]="formUsuario">
   <div class="mb-3">
     <label for="exampleInputNome" class="form-label">Nome</label>
     <input type="titulo" class="form-control" id="exampleInputNome" aria-describedby="nomeHelp" formControlName="nome" required>
@@ -29,5 +29,6 @@
       </option>
     </select>
   </div>
-  <button type="submit" class="btn btn-primary">SUBMIT</button>
+  <button type="submit" class="btn btn-primary" (click)="onSubmit()">ENVIAR</button>
+  <button type="delete" class="btn btn-primary" (click)="deleteUsuario()">DELETAR</button>
 </form>

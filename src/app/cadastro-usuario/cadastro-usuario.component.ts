@@ -61,6 +61,13 @@ export class CadastroUsuarioComponent implements OnInit {
     });
   }
 
+  deleteUsuario(){
+    if(this.idUsuario != null){
+      this.usuarioService.deleteUsuarioById(this.idUsuario).subscribe(data =>{
+      });
+    }
+  }
+
   onSubmit(){
     this.usuario = this.formUsuario.value;
     if(this.idUsuario != null){

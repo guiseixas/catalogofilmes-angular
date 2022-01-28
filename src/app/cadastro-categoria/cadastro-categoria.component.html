@@ -1,5 +1,5 @@
 <h1>Cadastro de Categorias</h1>
-<form [formGroup]="formCategoria" (ngSubmit)="onSubmit()">
+<form [formGroup]="formCategoria">
   <div class="mb-3">
     <label for="exampleInputNome" class="form-label">Nome</label>
     <input type="nome" class="form-control" id="exampleInputNome" aria-describedby="nomeHelp" formControlName="nome" required>
@@ -8,5 +8,14 @@
     <label for="exampleInputTag" class="form-label">Tag</label>
     <input type="tag" class="form-control" id="exampleInputTag" aria-describedby="tagHelp" formControlName="tag" required>
   </div>
-  <button type="submit" class="btn btn-primary">SUBMIT</button>
+  <div class="mb-3">
+    <label for="idiomas" class="form-label" >Idioma</label>
+    <select formControlName="idioma" class="form-label" id="idiomas" class="form-control" required >
+      <option>Selecione o idioma</option>
+      <option [ngValue]="idioma" *ngFor="let idioma of idiomas" >{{idioma.nome}}
+      </option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="onSubmit()">ENVIAR</button>
+  <button type="delete" class="btn btn-primary" (click)="deleteCategoria()">DELETAR</button>
 </form>

@@ -32,7 +32,7 @@ export class IdiomaService {
   deleteIdiomaById(id: number){
     const token = localStorage.getItem('token') || '';
     const headers = new HttpHeaders().append('Authorization', token);
-    return this.http.delete<Idioma>("idioma/deleteIdiomaById/" + id), {headers};
+    return this.http.delete<Idioma>("idioma/deleteIdiomaById/" + id, {headers});
   }
 
 }
