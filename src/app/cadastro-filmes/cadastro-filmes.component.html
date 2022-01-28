@@ -1,5 +1,5 @@
 <h1>Cadastro de Filmes</h1>
-<form [formGroup]="formFilme" (ngSubmit)="onSubmit()">
+<form [formGroup]="formFilme">
   <div class="mb-3">
     <label for="exampleInputTitulo" class="form-label">Titulo</label>
     <input type="titulo" class="form-control" id="exampleInputTitulo" aria-describedby="tituloHelp" formControlName="titulo" required>
@@ -37,5 +37,6 @@
       </option>
     </select>
   </div>
-  <button type="submit" class="btn btn-primary">SUBMIT</button>
+  <button type="submit" class="btn btn-primary" (click)="onSubmit()">ENVIAR</button>
+  <button type="delete" class="btn btn-primary" (click)="deleteFilme()">DELETAR</button>
 </form>

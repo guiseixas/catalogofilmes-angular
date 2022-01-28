@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { Idioma } from '../model/idioma.model';
 import { Categoria } from '../model/categoria.model';
 import { Filme } from './../model/filme.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-filmes',
@@ -29,7 +29,8 @@ export class CadastroFilmesComponent implements OnInit {
     private idiomaService: IdiomaService,
     private categoriaService: CategoriaService,
     private filmeService: FilmeService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -78,18 +79,26 @@ export class CadastroFilmesComponent implements OnInit {
     });
   }
 
-  onSubmit(){
-    this.filme = this.formFilme.value;
+  deleteFilme(){
+    console.log(this.idFilme);
     if(this.idFilme != null){
-      this.filme.id = this.idFilme;
-      this.filmeService.atualizaFilme(this.filme).subscribe(data =>{
-        console.log(data);
-      });
-    }else{
-      this.filmeService.salvaFilme(this.filme).subscribe(data =>{
+      this.filmeService.deleteFilmeById(this.idFilme).subscribe(data =>{
         console.log(data);
       });
     }
   }
 
+  onSubmit(){
+    this.filme = this.formFilme.value;
+    if(this.idFilme != null){
+      this.filme.id = this.idFilme;
+      this.filmeService.atualizaFilme(this.filme).subscribe(data =>{
+        this.router.navigate(['']);
+      });
+    }else{
+      this.filmeService.salvaFilme(this.filme).subscribe(data =>{
+        this.router.navigate(['']);
+      });
+      }
+  }
 }
