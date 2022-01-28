@@ -12,7 +12,7 @@
     <label for="idiomas" class="form-label" >Idioma</label>
     <select formControlName="idioma" class="form-label" id="idiomas" class="form-control" required >
       <option>Selecione o idioma</option>
-      <option [ngValue]="idioma" *ngFor="let idioma of idiomas" >{{idioma.nome}}
+      <option [ngValue]="idioma"  *ngFor="let idioma of idiomas" >{{idioma.nome}}
       </option>
     </select>
   </div>

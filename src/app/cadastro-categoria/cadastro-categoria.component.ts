@@ -30,7 +30,8 @@ export class CadastroCategoriaComponent implements OnInit {
     });
     this.route.params.subscribe(params => {
       let id = params['id']
-      if(id != null){
+      if(id != null)
+      {
         this.categoriaService.getCategoriaById(+id).subscribe(data => {
           this.idCategoria = id;
           this.categoria = data;

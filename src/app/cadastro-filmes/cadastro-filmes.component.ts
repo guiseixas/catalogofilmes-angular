@@ -35,6 +35,7 @@ export class CadastroFilmesComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+
     this.idiomaService.getIdiomas().subscribe(data => {
       this.idiomas = data;
     });

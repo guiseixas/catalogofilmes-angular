@@ -52,7 +52,6 @@ export class CadastroIdiomaComponent implements OnInit {
   deleteIdioma(){
     if(this.idIdioma != null){
       this.idiomaService.deleteIdiomaById(this.idIdioma).subscribe(data =>{
-
       });
     }
   }
